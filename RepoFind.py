@@ -5,7 +5,7 @@ user = "https://api.github.com/repos/{organization}/{repo_name}/stats/contributo
 
 def get_query(org, n, m):
 
-    repo = requests.get(url.format(organization = org, per_page = n), headers={'Authorization': 'cc690ebb5f399d119c60398f7864dd47d3d6d553'}).json()
+    repo = requests.get(url.format(organization = org, per_page = n), headers={'Authorization': 'add your token'}).json()
 
     store = []
     for i in repo["items"]:
@@ -16,7 +16,7 @@ def get_query(org, n, m):
 
     for i in range(len(store)):
 
-        cmt = requests.get(user.format(organization = org, repo_name = store[i][2]), headers={'Authorization': 'cc690ebb5f399d119c60398f7864dd47d3d6d553'}).json()
+        cmt = requests.get(user.format(organization = org, repo_name = store[i][2]), headers={'Authorization': 'add your token'}).json()
         newstore = []
         for j in cmt:
             if (("total" in j) and ("html_url" in j["author"]) and ("login" in j["author"])):
