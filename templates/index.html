@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block head %}<title>Repo Tracker</title> {% endblock %}
+
+
+{% block body %}
+
+<div class="content">
+    <h1 style="text-align: center">Repo Tracker</h1>
+
+
+    <div class="form">
+        <form action="/" method="POST">
+
+            <body bgcolor="#ccffcc"></body>
+
+            <table align="center">
+                <colgroup>
+                    <col style="background-color:red">
+                    <col style="background-color:rgb(255, 0, 106)">
+                    <col style="background-color:rgb(255, 0, 200)">
+                </colgroup>
+                <tr>
+                  <th>Organization</th>
+                  <th>Value of N</th>
+                  <th>Value of M</th>
+                </tr>
+                <tr>
+                  <td><input type="text" name="org" id="org" placeholder="Enter name of the organization" /></td>
+                  <td><input type="text" name="N" id="N" placeholder="Enter value of N" /></td>
+                  <td><input type="text" name="M" id="M" placeholder="Enter value of M" /></td>
+                </tr>
+        
+              </table>
+              <br />
+              <table align="center">
+                <tr>
+                    <td><input style="text-align: center" type="submit" value="Submit"></td>
+                </tr>
+              </table>
+
+
+        </form>
+    </div>
+
+    {% for repo in repos %}
+        <h4>
+            Repo Fork Count: {{repo[0]}}, Repo Url: {{repo[1]}}, Repo Id: {{repo[2]}}
+        </h4>
+        <ol>
+            {% for cont in repo[3] %}
+            <li>
+                Commit Count: {{cont[0]}}, User Url: {{cont[1]}}, Username: {{cont[2]}}
+            </li>
+            {% endfor %}
+        </ol>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
